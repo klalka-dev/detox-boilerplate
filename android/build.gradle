@@ -1,0 +1,20 @@
+buildscript {
+    repositories {
+        jcenter()
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.4'
+    }
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        jcenter()
+        google()
+        maven {
+            url "$rootDir/../node_modules/react-native/android"
+        }
+    }
+}
