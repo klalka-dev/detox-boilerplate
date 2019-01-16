@@ -2,7 +2,7 @@
   "name": "detox-boilerplate",
   "version": "1.0.0",
   "description": "A Boilerplate project for Detox",
-  "main": "index.js",
+  "main": "src/index.js",
   "repository": "git@klalkadev.github.com:klalka-dev/detox-boilerplate.git",
   "author": "klalka.dev@gmail.com",
   "license": "MIT",

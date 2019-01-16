@@ -1,3 +1,5 @@
+// Builds elements given a set of options (reducer?)
+
 // Take in Object
 
 // {
