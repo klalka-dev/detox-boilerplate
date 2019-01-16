@@ -39,3 +39,5 @@ e2e folder
 - actions
 - assertions
 - testids
+
+While setting up folders, cannot do export default "out of the box". Need to figure out how to use that.

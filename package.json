@@ -2,24 +2,26 @@
   "name": "detox-boilerplate",
   "version": "1.0.0",
   "description": "A Boilerplate project for Detox",
-  "main": "src/index.js",
+  "main": "index.js",
   "repository": "git@klalkadev.github.com:klalka-dev/detox-boilerplate.git",
   "author": "klalka.dev@gmail.com",
   "license": "MIT",
   "scripts": {
-    "start": "react-native start"
+    "start": "react-native start",
+    "test": "detox test -c ios.sim.debug",
+    "ios": "react-native run-ios",
+    "android": "react-native run-android"
   },
   "dependencies": {
     "react-native": "^0.57.8"
   },
   "devDependencies": {
-    "react": "^16.7.0",
     "detox": "^10.0.2",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "react": "^16.7.0"
   },
   "detox": {
     "test-runner": "mocha",
-    "specs": "e2e",
     "runner-config": "e2e/config/mocha.opts",
     "configurations": {
       "ios.sim.release": {
