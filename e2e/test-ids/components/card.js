@@ -1,4 +1,4 @@
 module.exports = {
-    name: "Card Component",
-    title: "Card Title"
+  name: "Card Component",
+  title: "Card Title"
 };

@@ -12,7 +12,7 @@ import {
   View,
   TouchableOpacity
 } from "react-native";
-import testids from '../e2e/test-ids'
+import testids from "../e2e/test-ids";
 
 class example extends Component {
   constructor(props) {
@@ -33,7 +33,12 @@ class example extends Component {
           alignItems: "center"
         }}
       >
-        <Text style={{ fontSize: 25, marginBottom: 30 }} testID={testids.routes.landing.title}>Welcome</Text>
+        <Text
+          style={{ fontSize: 25, marginBottom: 30 }}
+          testID={testids.routes.landing.title}
+        >
+          Welcome
+        </Text>
         <TouchableOpacity
           testID={testids.routes.landing.helloButton}
           onPress={this.onButtonPress.bind(this, "Hello")}
@@ -59,7 +64,9 @@ class example extends Component {
           alignItems: "center"
         }}
       >
-        <Text style={{ fontSize: 25 }}>{this.state.greeting}!!!</Text>
+        <Text style={{ fontSize: 25 }} testID={testids.routes.landing.greeting}>
+          {this.state.greeting}!!!
+        </Text>
       </View>
     );
   }

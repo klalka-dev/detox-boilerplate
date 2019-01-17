@@ -1,4 +1,4 @@
 module.exports = {
-    name: `Card List`,
-    container: `Card List Container`
+  name: `Card List`,
+  container: `Card List Container`
 };

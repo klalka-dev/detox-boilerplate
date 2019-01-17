@@ -1,22 +1,24 @@
-const testids = require('../test-ids')
+const Pages = require("../pages");
+const Actions = require("../actions");
+const Assert = require("../assertions");
 
-describe('Example', () => {
+describe("Example", () => {
   beforeEach(async () => {
     await device.reloadReactNative();
   });
 
-  it('should have welcome screen', async () => {
-    await expect(element(by.id(testids.routes.landing.name))).toBeVisible();
-    await expect(element(by.id(testids.routes.landing.title))).toBeVisible();
+  it("should have welcome screen", async () => {
+    await Assert.isVisible(Pages.Landing.container);
+    await Assert.isVisible(Pages.Landing.title);
   });
 
-  it('should show hello screen after tap', async () => {
-    await element(by.id(testids.routes.landing.helloButton)).tap();
-    await expect(element(by.text('Hello!!!'))).toBeVisible();
+  it("should show hello screen after tap", async () => {
+    await Actions.tap(Pages.Landing.helloButton);
+    await Assert.isVisible({ strategy: "text", matcher: "Hello!!!" });
   });
 
-  it('should show world screen after tap', async () => {
-    await element(by.id(testids.routes.landing.worldButton)).tap();
-    await expect(element(by.text('World!!!'))).toBeVisible();
+  it("should show world screen after tap", async () => {
+    await Actions.tap(Pages.Landing.worldButton);
+    await Assert.hasText(Pages.Landing.greeting, "World!!!");
   });
 });
