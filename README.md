@@ -1,43 +1,61 @@
-This project will be a Detox boilerplate
+A React Native boilerplate featuring Detox configuration
 
-For now I am trying to create a decent app for testing purposes
+Customized the default example app provided by the Detox project to use a simple workflow for React Native projects
 
-I had problems with the react native version but after a bunch of deleting cache, resetting terminal windows, and essentially turning everything off and on again the iOS app is building and the tests are running.
+# Quick Start
 
-Android still has problems and will not build
+If you are looking to get started as fast as possible, start here:
 
-First Android Error:
+You must have the following installed:
 
-FAILURE: Build failed with an exception.
+- MacOS 10.11+
+- XCode v8.3+
+- Homebrew
+- Node v8+
+- Applesimutils: `brew install applesimutils`
+- Detox-cli: `npm install -g detox-cli`
 
-- Where:
-  Build file '/Users/kevinlalka/Personal/detox-boilerplate/node_modules/detox/android/detox/build.gradle' line: 2
+From project root, run `npm test`
 
-- What went wrong:
-  A problem occurred evaluating project ':detox'.
+# Configurations
 
-  > Plugin with id 'kotlin-android' not found.
+## Test Runner
 
-- Try:
-  Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+We are using Mocha as our test runner. This is configured in [`package.json`](../package.json) under
+`test-runner`.
 
-- Get more help at https://help.gradle.org
+## Reporter
 
-BUILD FAILED in 0s
+This is configured in the [mocha.opts](./e2e/config/mocha.opts)
 
-Since Detox is very poor at supporting Android we will skip for now. I cannot recommend using Detox if you have the need to test an Android application.
+# Pages
 
-Adding in boilerplate recommendations now
+TBD
 
-e2e folder
+# Scripts
 
-- pages
-- components?
-- element factory?
-- scripts
-- data
-- actions
-- assertions
-- testids
+All scripts are stored in the `e2e/scripts` folder. Any new files
+must end with `.spec.js`.
 
-While setting up folders, cannot do export default "out of the box". Need to figure out how to use that.
+# Test-ids
+
+The `e2e/test-ids` folder is created/maintained solely for automation purposes.
+If you need to access an element you can create a new testID value for that
+element. The naming pattern for this is as follows:
+
+The test-id folder consists of four sub-folders which map to other folders in
+the `src`. Those are: `components` and `routes`. Since all
+elements for the app are stored in any one of these folders they can directly
+map to the underlying test-id JSON object.
+
+# Actions
+
+The `e2e/actions/` folder contains wrappers for the Detox actions. These can be
+further built out split behavior between Android and iOS but this has not yet
+been implemented.
+
+# Assertions
+
+The `e2e/assertions/` folder contains wrappers for the Detox `expect`
+assertions. They operate almost exactly like the default assertions but have
+some default values for timeouts and visibility checks built in.
