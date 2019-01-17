@@ -1,7 +1,7 @@
-// import components from "./components";
-// import routes from "./routes";
+const components = require("./components");
+const routes = require("./routes");
 
-// export default {
-//   components,
-//   routes
-// };
+module.exports = {
+    components,
+    routes
+};

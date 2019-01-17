@@ -1,4 +1,4 @@
-// export default {
-//   name: "Card Component",
-//   title: "Card Title"
-// };
+module.exports = {
+    name: "Card Component",
+    title: "Card Title"
+};

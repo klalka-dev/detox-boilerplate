@@ -1,9 +1,9 @@
-// import cardlist from "./cardlist";
-// import landing from "./landing";
-// import review from "./review";
+const cardlist = require("./cardlist");
+const landing = require("./landing");
+const review = require("./review");
 
-// export default {
-//   cardlist,
-//   landing,
-//   review
-// };
+module.exports = {
+    cardlist,
+    landing,
+    review
+};

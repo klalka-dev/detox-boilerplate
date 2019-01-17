@@ -1,5 +1,5 @@
-// import card from "./card";
+const card = require('./card')
 
-// export default {
-//   card
-// };
+module.exports = {
+    card
+};
