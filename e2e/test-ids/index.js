@@ -1,7 +1,5 @@
-const components = require("./components");
-const routes = require("./routes");
+const landingPage = require("./landing-page");
 
 module.exports = {
-  components,
-  routes
+  landingPage
 };

@@ -1,4 +1,4 @@
-A React Native boilerplate featuring Detox configuration
+# A React Native boilerplate featuring Detox configuration
 
 Customized the default example app provided by the Detox project to use a simple workflow for React Native projects
 
@@ -15,7 +15,9 @@ You must have the following installed:
 - Applesimutils: `brew install applesimutils`
 - Detox-cli: `npm install -g detox-cli`
 
-From project root, run `npm test`
+From project root, run `npm run test-ios`.
+
+> NOTE: Android does not currently work. It is throwing an error. I have commented on StackOverflow and Detox issues but not sure what is wrong.
 
 # Configurations
 

@@ -1,30 +1,36 @@
-const landing = require("../test-ids/routes/landing");
+const {
+  name,
+  title,
+  helloButton,
+  worldButton,
+  greeting
+} = require("../test-ids/landing-page");
 
 module.exports = {
   container: {
     strategy: "id",
-    matcher: landing.name
+    matcher: name
   },
   title: {
     strategy: "id",
-    matcher: landing.title
+    matcher: title
   },
   helloButton: {
     strategy: "id",
-    matcher: landing.helloButton,
+    matcher: helloButton,
     options: {
       tappable: true
     }
   },
   worldButton: {
     strategy: "id",
-    matcher: landing.worldButton,
+    matcher: worldButton,
     options: {
       tappable: true
     }
   },
   greeting: {
     strategy: "id",
-    matcher: landing.greeting
+    matcher: greeting
   }
 };

@@ -25,7 +25,7 @@ class example extends Component {
     if (this.state.greeting) return this.renderAfterButton();
     return (
       <View
-        testID={testids.routes.landing.name}
+        testID={testids.landingPage.name}
         style={{
           flex: 1,
           paddingTop: 20,
@@ -35,18 +35,18 @@ class example extends Component {
       >
         <Text
           style={{ fontSize: 25, marginBottom: 30 }}
-          testID={testids.routes.landing.title}
+          testID={testids.landingPage.title}
         >
           Welcome
         </Text>
         <TouchableOpacity
-          testID={testids.routes.landing.helloButton}
+          testID={testids.landingPage.helloButton}
           onPress={this.onButtonPress.bind(this, "Hello")}
         >
           <Text style={{ color: "blue", marginBottom: 20 }}>Say Hello</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          testID={testids.routes.landing.worldButton}
+          testID={testids.landingPage.worldButton}
           onPress={this.onButtonPress.bind(this, "World")}
         >
           <Text style={{ color: "blue", marginBottom: 20 }}>Say World</Text>
@@ -64,7 +64,7 @@ class example extends Component {
           alignItems: "center"
         }}
       >
-        <Text style={{ fontSize: 25 }} testID={testids.routes.landing.greeting}>
+        <Text style={{ fontSize: 25 }} testID={testids.landingPage.greeting}>
           {this.state.greeting}!!!
         </Text>
       </View>
