@@ -6,43 +6,22 @@ const {
   greeting
 } = require("../test-ids/landing-page");
 
-module.exports = {
-  container: {
-    strategy: "id",
-    matcher: name
-  },
-  title: {
-    strategy: "id",
-    matcher: title
-  },
-  helloButton: {
-    strategy: "id",
-    matcher: helloButton,
-    options: [
-      {
-        command: "withAncestor",
-        element: {
-          strategy: "id",
-          matcher: name
-        }
-      }
-    ]
-  },
-  worldButton: {
-    strategy: "id",
-    matcher: worldButton,
-    options: [
-      {
-        command: "withAncestor",
-        element: {
-          strategy: "id",
-          matcher: name
-        }
-      }
-    ]
-  },
-  greeting: {
-    strategy: "id",
-    matcher: greeting
+class Landing {
+  get container() {
+    return by.id(name);
   }
-};
+  get title() {
+    return by.id(title);
+  }
+  get helloButton() {
+    return by.id(helloButton).withAncestor(this.container);
+  }
+  get worldButton() {
+    return by.id(worldButton).withAncestor(this.container);
+  }
+  get greeting() {
+    return by.id(greeting);
+  }
+}
+
+module.exports = new Landing();

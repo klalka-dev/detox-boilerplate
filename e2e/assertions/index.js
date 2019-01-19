@@ -1,11 +1,9 @@
-const getElement = require("../element");
-
 /**
  * Checks if element is visible on screen
  * @param { strategy, matcher, ... } matcher
  */
 const isVisible = async matcher => {
-  await expect(getElement(matcher)).toBeVisible();
+  await expect(element(matcher)).toBeVisible();
 };
 
 /**
@@ -13,7 +11,7 @@ const isVisible = async matcher => {
  * @param { strategy, matcher, ... } matcher
  */
 const isNotVisible = async matcher => {
-  await expect(getElement(matcher)).toBeNotVisible();
+  await expect(element(matcher)).toBeNotVisible();
 };
 
 /**
@@ -21,7 +19,7 @@ const isNotVisible = async matcher => {
  * @param { strategy, matcher, ... } matcher
  */
 const doesExist = async matcher => {
-  await expect(getElement(matcher)).toExist();
+  await expect(element(matcher)).toExist();
 };
 
 /**
@@ -29,7 +27,7 @@ const doesExist = async matcher => {
  * @param { strategy, matcher, ... } matcher
  */
 const doesNotExist = async matcher => {
-  await expect(getElement(matcher)).toNotExist();
+  await expect(element(matcher)).toNotExist();
 };
 
 /**
@@ -38,7 +36,7 @@ const doesNotExist = async matcher => {
  * @param {string} text
  */
 const hasText = async (matcher, text) => {
-  await expect(getElement(matcher)).toHaveText(text);
+  await expect(element(matcher)).toHaveText(text);
 };
 
 /**
@@ -47,7 +45,7 @@ const hasText = async (matcher, text) => {
  * @param {string} id
  */
 const hasID = async (matcher, id) => {
-  await expect(getElement(matcher)).toHaveId(id);
+  await expect(element(matcher)).toHaveId(id);
 };
 
 /**
@@ -56,7 +54,7 @@ const hasID = async (matcher, id) => {
  * @param {string} label
  */
 const hasLabel = async (matcher, label) => {
-  await expect(getElement(matcher)).toHaveLabel(label);
+  await expect(element(matcher)).toHaveLabel(label);
 };
 
 /**
@@ -65,7 +63,7 @@ const hasLabel = async (matcher, label) => {
  * @param {string} value
  */
 const hasValue = async (matcher, value) => {
-  await expect(getElement(matcher)).toHaveValue(value);
+  await expect(element(matcher)).toHaveValue(value);
 };
 
 module.exports = {

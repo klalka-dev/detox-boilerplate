@@ -1,6 +1,3 @@
-const getElement = require("../element");
-const defaultScrollView = { strategy: "id", matcher: "scrollview" };
-
 /**
  * Scrolls the screen X pixels in provided direction
  * @param {Detox.Matchers} matcher
@@ -8,7 +5,7 @@ const defaultScrollView = { strategy: "id", matcher: "scrollview" };
  * @param {Detox.direction} direction
  */
 const scroll = async (matcher, pixel, direction) =>
-  getElement(matcher).scroll(pixel, direction);
+  element(matcher).scroll(pixel, direction);
 
 /**
  * Scrolls the provided element into the viewport
@@ -21,11 +18,11 @@ const scrollIntoView = async (
   matcher,
   direction,
   speed,
-  scrollViewMatcher = defaultScrollView
+  scrollViewMatcher = "scrollView"
 ) =>
   waitFor(getElement(matcher))
     .toBeVisible()
-    .whileElement(getElement(scrollViewMatcher))
+    .whileElement(element(scrollViewMatcher))
     .scroll(speed, direction);
 
 /**
@@ -34,20 +31,20 @@ const scrollIntoView = async (
  * @param {Detox.direction} direction
  */
 const swipe = (scrollMatcher, direction) =>
-  getElement(scrollMatcher).swipe(direction);
+  element(scrollMatcher).swipe(direction);
 
 /**
  * Taps element
  * @param {Detox.Matchers} matcher
  */
-const tap = async matcher => getElement(matcher).tap();
+const tap = async matcher => element(matcher).tap();
 
 /**
  * Replaces text on provided textfield
  * @param {Detox.Matchers} ele
  * @param {string} text
  */
-const replaceText = async (ele, text) => getElement(ele).replaceText(text);
+const replaceText = async (ele, text) => element(ele).replaceText(text);
 
 /**
  * Clears provided textfield
@@ -61,7 +58,7 @@ const clearText = async ele => replaceText(ele, "");
  * @param {number} timeout
  */
 const waitForVisible = async (matcher, timeout = 5000) =>
-  waitFor(getElement(matcher))
+  waitFor(element(matcher))
     .toBeVisible()
     .withTimeout(timeout);
 
@@ -71,7 +68,7 @@ const waitForVisible = async (matcher, timeout = 5000) =>
  * @param {number} timeout
  */
 const waitForNotVisible = async (matcher, timeout = 5000) =>
-  waitFor(getElement(matcher))
+  waitFor(element(matcher))
     .toBeNotVisible()
     .withTimeout(timeout);
 

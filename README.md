@@ -38,16 +38,17 @@ List of folders inside the `e2e` directory and their purpose
 
 This boilerplate example uses a [Page Object Model](https://medium.com/tech-tajawal/page-object-model-pom-design-pattern-f9588630800b) to organize the different views (pages, routes, screens, etc) of your application.
 
-These Pages will contain information for all the elements on the page which is necessary for the element wrapper to have in order to build the proper element selector
+These pages are a collection of Elements, which are composed of a valid Detox Matcher and a locator String. It is a common practice to put a `testID` on the container for your page for chaining purposes. Below is a sample implementation of a container element.
 
 ```js
-container: {
-    strategy: "id",
-    matcher: "Custom Test ID for Container Element"
-  },
+get container() {
+  return by.id("Page Container");
+}
 ```
 
-By creating a `strategy` and `matcher` property which can be passed to the `Actions` and `Assertions` wrappers the Locator for your desired element can be built and passed to the Detox API. More information on how this works will be available in the [Development Workflow](#Development-Workflow) section.
+These locators are passed to the `actions` and `assertions` wrappers which use this to build the corresponding Detox API call. See the [Actions](#Actions) and [Assertions](#Assertions) sections below.
+
+For examples on how you can build [Detox Matchers](https://github.com/wix/Detox/blob/master/docs/APIRef.Matchers.md) visit their docs, or check out the sample [Development Workflow](#Development-Workflow) below.
 
 ## `scripts`
 
@@ -62,55 +63,35 @@ The `e2e/test-ids` folder is created/maintained solely for automation purposes.
 If you need to interact with an element you can create a new testID value for that
 element.
 
-In this example we have a [landing-page.js](./e2e/test-ids/landing-page.js) which represents the only page this App has. You can continue to following this pattern for as long as you need. There is one neat little trick I enjoy doing when the application is built out, after you've added navigation routes and components. I plan on building out a solution which will use the [Dribble](http://developer.dribbble.com/v2/) API to do something fun.
+In this example we have a [landing-page.js](./e2e/test-ids/landing-page.js) which represents the only page this App has. You can continue to following this pattern for as long as you need. There is one neat little trick I enjoy doing when the application is built out, after you've added navigation routes and components. I plan on building out a solution which will use the [Dribble](http://developer.dribbble.com/v2/) API to do something fun. I will update this with a link when it is ready.
 
 # `actions`
 
-The `e2e/actions/` folder contains wrappers for the Detox actions. These can be
-further built out split behavior between Android and iOS but this has not yet
-been implemented.
+The `e2e/actions/` folder contains wrappers for the Detox actions. This allows us to mutate behavior between interaction requests. This could be useful for diverging behavior based on things such as platform or current application state. To see all the available [Detox Device APIs](https://github.com/wix/Detox/blob/master/docs/APIRef.DeviceObjectAPI.md) check out their site.
 
 # `assertions`
 
 The `e2e/assertions/` folder contains wrappers for the Detox `expect`
-assertions. They operate almost exactly like the default assertions but have
-some default values for timeouts and visibility checks built in.
-
-# `element`
-
-This contains the logic for building the Detox Locator given our provided Page Object element data structure.
-
-As stated above, all elements you add to a page need to have a `strategy` and a `matcher` property. These are required to locate the element using the Detox API. The strategy property must be a valid [Detox Matcher](https://github.com/wix/Detox/blob/master/docs/APIRef.Matchers.md) and the matcher property accept the value as text.
-
-Additionally you can specify a chain command to make your element selectors more precise since Detox does not support returning an array of elements based on a potentially ambiguous matcher strategy. You can do this by adding the `options` property to the element which will accept a `command` property and an element object, as defined above. The following is an example with the chaining command `withAncestor`:
-
-```js
-  worldButton: {
-    strategy: "id",
-    matcher: testids.landingPage.worldButton,
-    options: [
-      {
-        command: "withAncestor",
-        element: {
-          strategy: "id",
-          matcher: testids.landingPage.container
-        }
-      }
-    ]
-  }
-```
-
-> NOTE: Detox does support chaining multiple strategies, but this current implementation cannot handle this scenario. Will need to figure out new solution for this. I believe I can do something with a reducer function and maybe bind, but not sure.
+assertions. This allows us to mutate behavior between interaction requests. This could be useful for scrolling elements into view before performing insertions or setting default variables like timeouts. To see all the available [Detox Expect APIs](https://github.com/wix/Detox/blob/master/docs/APIRef.Expect.md) check out their site.
 
 # Development Workflow
 
 An explanation of how easy maintaining UI Tests can be with Detox by showing an example Development Workflow
 
-// TODO
+// get single component working
 
-1. Take current app example (demo-react-native) and break out Links into reusable components
-2. Add a new link
+1. Build tests based on requirements and initial App state
+2. Build Card Component
 3. Create test-ids for the list
-4. map over links and use index to specify elements (because Detox does not allow multiple elements to be returned)
-5. Create two containers, with three links each, with same text
-6. Show how you can use withAncestor to be specific and how you can interact with similar reusable components by chaining
+4. Hook up to Detox and get tests to pass
+
+// next
+
+1. Create second component
+2. Show how chaining works
+
+// exposing state via template literals on testID
+
+1. Create onClick and action for link that highlights element
+2. expose isHighlighted via testID
+3. check for that prop in both states
