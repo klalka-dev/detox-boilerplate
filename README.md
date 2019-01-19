@@ -62,7 +62,7 @@ The `e2e/test-ids` folder is created/maintained solely for automation purposes.
 If you need to interact with an element you can create a new testID value for that
 element.
 
-In this example we have a [landing-page.js](./e2e/test-ids/landing-page.js) which represents the only page this App has. You can continue to following this pattern for as long as you need. There is one neat little trick I enjoy doing when the application is built out, after you've added navigation routes and components. If you want to this folder structure modified for a larger application, check out my [Dribble Collection App](/path/to/new/repo)
+In this example we have a [landing-page.js](./e2e/test-ids/landing-page.js) which represents the only page this App has. You can continue to following this pattern for as long as you need. There is one neat little trick I enjoy doing when the application is built out, after you've added navigation routes and components. I plan on building out a solution which will use the [Dribble](http://developer.dribbble.com/v2/) API to do something fun.
 
 # `actions`
 
@@ -80,13 +80,33 @@ some default values for timeouts and visibility checks built in.
 
 This contains the logic for building the Detox Locator given our provided Page Object element data structure.
 
-This is still under construction and will require more documentation after it's built
+As stated above, all elements you add to a page need to have a `strategy` and a `matcher` property. These are required to locate the element using the Detox API. The strategy property must be a valid [Detox Matcher](https://github.com/wix/Detox/blob/master/docs/APIRef.Matchers.md) and the matcher property accept the value as text.
+
+Additionally you can specify a chain command to make your element selectors more precise since Detox does not support returning an array of elements based on a potentially ambiguous matcher strategy. You can do this by adding the `options` property to the element which will accept a `command` property and an element object, as defined above. The following is an example with the chaining command `withAncestor`:
+
+```js
+  worldButton: {
+    strategy: "id",
+    matcher: testids.landingPage.worldButton,
+    options: [
+      {
+        command: "withAncestor",
+        element: {
+          strategy: "id",
+          matcher: testids.landingPage.container
+        }
+      }
+    ]
+  }
+```
+
+> NOTE: Detox does support chaining multiple strategies, but this current implementation cannot handle this scenario. Will need to figure out new solution for this. I believe I can do something with a reducer function and maybe bind, but not sure.
 
 # Development Workflow
 
 An explanation of how easy maintaining UI Tests can be with Detox by showing an example Development Workflow
 
-I should put a blog post about this part here.
+// TODO
 
 1. Take current app example (demo-react-native) and break out Links into reusable components
 2. Add a new link

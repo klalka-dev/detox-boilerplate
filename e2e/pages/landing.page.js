@@ -18,16 +18,28 @@ module.exports = {
   helloButton: {
     strategy: "id",
     matcher: helloButton,
-    options: {
-      tappable: true
-    }
+    options: [
+      {
+        command: "withAncestor",
+        element: {
+          strategy: "id",
+          matcher: name
+        }
+      }
+    ]
   },
   worldButton: {
     strategy: "id",
     matcher: worldButton,
-    options: {
-      tappable: true
-    }
+    options: [
+      {
+        command: "withAncestor",
+        element: {
+          strategy: "id",
+          matcher: name
+        }
+      }
+    ]
   },
   greeting: {
     strategy: "id",
