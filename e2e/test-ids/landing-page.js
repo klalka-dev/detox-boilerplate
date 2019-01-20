@@ -1,8 +1,7 @@
 module.exports = {
-  name: `Landing`,
-  container: `Landing Container`,
+  container: `Landing Page`,
+  card: "Card Container",
   title: `Landing Title`,
-  helloButton: `Hello Button`,
-  worldButton: `World Button`,
-  greeting: `Greeting`
+  linkOne: "Card Link One",
+  linkTwo: "Card Link Two"
 };

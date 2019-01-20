@@ -1,26 +1,26 @@
 const {
-  name,
-  title,
-  helloButton,
-  worldButton,
-  greeting
+  card,
+  container,
+  linkOne,
+  linkTwo,
+  title
 } = require("../test-ids/landing-page");
 
 class Landing {
   get container() {
-    return by.id(name);
+    return by.id(container);
   }
   get title() {
     return by.id(title);
   }
-  get helloButton() {
-    return by.id(helloButton).withAncestor(this.container);
+  get card() {
+    return by.id(card);
   }
-  get worldButton() {
-    return by.id(worldButton).withAncestor(this.container);
+  get linkOne() {
+    return by.id(linkOne);
   }
-  get greeting() {
-    return by.id(greeting);
+  get linkTwo() {
+    return by.id(linkTwo);
   }
 }
 

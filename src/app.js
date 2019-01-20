@@ -12,7 +12,8 @@ import {
   View,
   TouchableOpacity
 } from "react-native";
-import testids from "../e2e/test-ids";
+import Card from "./components/Card";
+import { landingPage } from "../e2e/test-ids";
 
 class example extends Component {
   constructor(props) {
@@ -22,51 +23,22 @@ class example extends Component {
     };
   }
   render() {
-    if (this.state.greeting) return this.renderAfterButton();
     return (
       <View
-        testID={testids.landingPage.name}
+        testID={landingPage.container}
         style={{
           flex: 1,
-          paddingTop: 20,
-          justifyContent: "center",
+          paddingTop: 50,
           alignItems: "center"
         }}
       >
         <Text
           style={{ fontSize: 25, marginBottom: 30 }}
-          testID={testids.landingPage.title}
+          testID={landingPage.title}
         >
-          Welcome
+          Detox Boilerplate App
         </Text>
-        <TouchableOpacity
-          testID={testids.landingPage.helloButton}
-          onPress={this.onButtonPress.bind(this, "Hello")}
-        >
-          <Text style={{ color: "blue", marginBottom: 20 }}>Say Hello</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          testID={testids.landingPage.worldButton}
-          onPress={this.onButtonPress.bind(this, "World")}
-        >
-          <Text style={{ color: "blue", marginBottom: 20 }}>Say World</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-  renderAfterButton() {
-    return (
-      <View
-        style={{
-          flex: 1,
-          paddingTop: 20,
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
-        <Text style={{ fontSize: 25 }} testID={testids.landingPage.greeting}>
-          {this.state.greeting}!!!
-        </Text>
+        <Card greeting="Hello!" />
       </View>
     );
   }
