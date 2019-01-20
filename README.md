@@ -4,9 +4,7 @@ Customized the `demo-react-native` example app provided by the [Detox project](h
 
 # Quick Start
 
-If you are looking to get started as fast as possible, start here:
-
-You must have the following installed:
+To get started with the default configurations, first you must have the following installed:
 
 - MacOS 10.11+
 - XCode v8.3+
@@ -15,7 +13,7 @@ You must have the following installed:
 - Applesimutils: `brew install applesimutils`
 - Detox-cli: `npm install -g detox-cli`
 
-From project root, run `npm run test-ios`.
+Next, from project root run: `npm run test-ios`.
 
 > NOTE: Android does not currently work. It is throwing an error. I have commented on StackOverflow and Detox issues but not sure what is wrong.
 
@@ -30,11 +28,30 @@ We are using Mocha as our test runner. This is configured in [`package.json`](..
 
 This is configured in the [mocha.opts](./e2e/config/mocha.opts)
 
-# Folders
+# Folder Structure
+
+## `actions/`
+
+The `e2e/actions/` folder contains wrappers for the Detox actions. This allows us to mutate behavior between interaction requests. This could be useful for diverging behavior based on things such as platform or current application state. To see all the available [Detox Device APIs](https://github.com/wix/Detox/blob/master/docs/APIRef.DeviceObjectAPI.md) check out their site.
+
+## `assertions/`
+
+The `e2e/assertions/` folder contains wrappers for the Detox `expect`
+assertions. This allows us to mutate behavior between interaction requests. This could be useful for scrolling elements into view before performing insertions or setting default variables like timeouts. To see all the available [Detox Expect APIs](https://github.com/wix/Detox/blob/master/docs/APIRef.Expect.md) check out their site.
 
 List of folders inside the `e2e` directory and their purpose
 
-## `pages`
+## `config/`
+
+This contains our `mocha.opts` file. For more information on mocha check out their [docs](https://mochajs.org/#mochaopts).
+
+> There is an option to configure Jest instead of Mocha. Not sure if it is worth it to create a boilerplate generate to have mocha or jest set as default.
+
+## `data/`
+
+Contains the test data used in the testing of the app. This could be things such as usernames, passwords, API keys, etc.
+
+## `pages/`
 
 This boilerplate example uses a [Page Object Model](https://medium.com/tech-tajawal/page-object-model-pom-design-pattern-f9588630800b) to organize the different views (pages, routes, screens, etc) of your application.
 
@@ -63,35 +80,8 @@ The `e2e/test-ids` folder is created/maintained solely for automation purposes.
 If you need to interact with an element you can create a new testID value for that
 element.
 
-In this example we have a [landing-page.js](./e2e/test-ids/landing-page.js) which represents the only page this App has. You can continue to following this pattern for as long as you need. There is one neat little trick I enjoy doing when the application is built out, after you've added navigation routes and components. I plan on building out a solution which will use the [Dribble](http://developer.dribbble.com/v2/) API to do something fun. I will update this with a link when it is ready.
-
-# `actions`
-
-The `e2e/actions/` folder contains wrappers for the Detox actions. This allows us to mutate behavior between interaction requests. This could be useful for diverging behavior based on things such as platform or current application state. To see all the available [Detox Device APIs](https://github.com/wix/Detox/blob/master/docs/APIRef.DeviceObjectAPI.md) check out their site.
-
-# `assertions`
-
-The `e2e/assertions/` folder contains wrappers for the Detox `expect`
-assertions. This allows us to mutate behavior between interaction requests. This could be useful for scrolling elements into view before performing insertions or setting default variables like timeouts. To see all the available [Detox Expect APIs](https://github.com/wix/Detox/blob/master/docs/APIRef.Expect.md) check out their site.
-
 # Development Workflow
 
 An explanation of how easy maintaining UI Tests can be with Detox by showing an example Development Workflow
 
-// get single component working
-
-1. Build tests based on requirements and initial App state
-2. Build Card Component
-3. Create test-ids for the list
-4. Hook up to Detox and get tests to pass
-
-// next
-
-1. Create second component
-2. Show how chaining works
-
-// exposing state via template literals on testID
-
-1. Create onClick and action for link that highlights element
-2. expose isHighlighted via testID
-3. check for that prop in both states
+Here is a notion post that is a current [WIP](https://www.notion.so/Using-Chaining-to-Make-Detox-Selectors-More-Precise-32c4a60c008441638f1e8e1bc6138246)

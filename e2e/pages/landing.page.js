@@ -8,13 +8,16 @@ class Landing {
     return by.id(landingPage.title);
   }
 
-  getCardLinkContainer(index = 0) {
+  getLinkContainer(index = 0) {
     return by.id(card.item.container(index));
   }
-  getCardLinkText(index = 0) {
+  getLinkText(index = 0) {
+    return by.id(card.item.linkText).withAncestor(this.getLinkContainer(index));
+  }
+  getLinkButton(index = 0, status) {
     return by
-      .id(card.item.linkText)
-      .withAncestor(this.getCardLinkContainer(index));
+      .id(card.item.button(status))
+      .withAncestor(this.getLinkContainer(index));
   }
 }
 
