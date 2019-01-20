@@ -5,15 +5,10 @@
  */
 
 import React, { Component } from "react";
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity
-} from "react-native";
+import { AppRegistry, Text, View } from "react-native";
 import Card from "./components/Card";
-import { landingPage } from "../e2e/test-ids";
+
+import testids from "../e2e/test-ids/";
 
 class example extends Component {
   constructor(props) {
@@ -25,20 +20,20 @@ class example extends Component {
   render() {
     return (
       <View
-        testID={landingPage.container}
         style={{
           flex: 1,
           paddingTop: 50,
           alignItems: "center"
         }}
+        testID={testids.landingPage.container}
       >
         <Text
           style={{ fontSize: 25, marginBottom: 30 }}
-          testID={landingPage.title}
+          testID={testids.landingPage.title}
         >
           Detox Boilerplate App
         </Text>
-        <Card greeting="Hello!" />
+        <Card links={["Hello!", "Click Me!", "Leave Me Alone."]} />
       </View>
     );
   }

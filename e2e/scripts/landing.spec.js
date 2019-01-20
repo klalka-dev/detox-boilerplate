@@ -12,17 +12,21 @@ describe("Landing", () => {
     await Assert.isVisible(LandingPage.title);
   });
 
-  it("should have link card", async () => {
-    await Assert.isVisible(LandingPage.card);
+  it("should have 3 cards", async () => {
+    await Assert.isVisible(LandingPage.getCardLinkContainer(0));
+    await Assert.isVisible(LandingPage.getCardLinkContainer(1));
+    await Assert.isVisible(LandingPage.getCardLinkContainer(2));
   });
 
-  it("should have 2 links in card", async () => {
-    await Assert.isVisible(LandingPage.linkOne);
-    await Assert.isVisible(LandingPage.linkTwo);
+  it("should have 3 text links in card", async () => {
+    await Assert.hasText(LandingPage.getCardLinkText(0), "Hello!");
+    await Assert.hasText(LandingPage.getCardLinkText(1), "Click Me!");
+    await Assert.hasText(LandingPage.getCardLinkText(2), "Leave Me Alone.");
   });
 
-  it("should tap both links", async () => {
-    await Action.tap(LandingPage.linkOne);
-    await Action.tap(LandingPage.linkTwo);
+  it("should tap all links", async () => {
+    await Action.tap(LandingPage.getCardLinkContainer(0));
+    await Action.tap(LandingPage.getCardLinkContainer(1));
+    await Action.tap(LandingPage.getCardLinkContainer(2));
   });
 });

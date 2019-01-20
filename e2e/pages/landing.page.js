@@ -1,26 +1,20 @@
-const {
-  card,
-  container,
-  linkOne,
-  linkTwo,
-  title
-} = require("../test-ids/landing-page");
+const { card, landingPage } = require("../test-ids");
 
 class Landing {
   get container() {
-    return by.id(container);
+    return by.id(landingPage.container);
   }
   get title() {
-    return by.id(title);
+    return by.id(landingPage.title);
   }
-  get card() {
-    return by.id(card);
+
+  getCardLinkContainer(index = 0) {
+    return by.id(card.item.container(index));
   }
-  get linkOne() {
-    return by.id(linkOne);
-  }
-  get linkTwo() {
-    return by.id(linkTwo);
+  getCardLinkText(index = 0) {
+    return by
+      .id(card.item.linkText)
+      .withAncestor(this.getCardLinkContainer(index));
   }
 }
 
