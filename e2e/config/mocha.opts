@@ -1,4 +1,0 @@
---recursive
---timeout 120000
---bail
---reporter spec
