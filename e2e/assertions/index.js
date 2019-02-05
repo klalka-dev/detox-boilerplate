@@ -66,7 +66,7 @@ const hasValue = async (matcher, value) => {
   await expect(element(matcher)).toHaveValue(value);
 };
 
-module.exports = {
+export default {
   doesExist,
   doesNotExist,
   hasID,

@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   DEFAULT: "white",
   RED: "red",
   GREEN: "green",

@@ -1,7 +1,7 @@
-const card = require("./card");
-const landingPage = require("./landing-page");
+import card from "./card";
+import landingPage from "./landing-page";
 
-module.exports = {
+export default {
   card,
   landingPage
 };

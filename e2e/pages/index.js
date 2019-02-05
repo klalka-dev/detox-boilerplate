@@ -1,5 +1,5 @@
-const Landing = require("./Landing.page");
+import Landing from "./Landing.page";
 
-module.exports = {
+export default {
   Landing
 };

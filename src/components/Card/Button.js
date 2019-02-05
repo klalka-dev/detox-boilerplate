@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Text, TouchableOpacity } from "react-native";
+import { TouchableOpacity } from "react-native";
+import testIDs from "../../../e2e/test-ids";
 
 class Button extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class Button extends Component {
           height: 20
         }}
         onPress={this.updateColor.bind(this, buttonColor)}
-        testID={`${buttonColor} Button`}
+        testID={testIDs.card.item.button(buttonColor)}
       />
     );
   }

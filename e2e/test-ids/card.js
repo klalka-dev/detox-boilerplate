@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   container: "Card Container",
   item: {
     container: index => `Card Link Container ${index}`,

@@ -1,8 +1,8 @@
-const Action = require("../actions");
-const Assert = require("../assertions");
+import Action from "../actions";
+import Assert from "../assertions";
 
-const LandingPage = require("../pages/Landing.page");
-const ButtonStates = require("../data/button-states");
+import LandingPage from "../pages/Landing.page";
+import ButtonStates from "../data/button-states";
 
 describe("Landing", () => {
   beforeAll(async () => {

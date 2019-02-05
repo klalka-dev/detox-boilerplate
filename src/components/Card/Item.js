@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
-import { card } from "../../../e2e/test-ids";
+import testIDs from "../../../e2e/test-ids";
 import Button from "./Button";
 
 class Item extends Component {
@@ -10,7 +10,7 @@ class Item extends Component {
   render() {
     const { children, index } = this.props;
     return (
-      <View testID={card.item.container(index)}>
+      <View testID={testIDs.card.item.container(index)}>
         <TouchableOpacity
           style={{
             borderColor: "black",
@@ -21,7 +21,7 @@ class Item extends Component {
           <Button />
           <Text
             style={{ color: "blue", margin: 20, fontSize: 16 }}
-            testID={card.item.linkText}
+            testID={testIDs.card.item.linkText}
           >
             {children}
           </Text>

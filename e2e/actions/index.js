@@ -94,7 +94,7 @@ const launch = async uninstall => {
   });
 };
 
-module.exports = {
+export default {
   clearText,
   launch,
   replaceText,
