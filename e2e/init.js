@@ -1,19 +1,12 @@
 const detox = require("detox");
 const config = require("../package.json").detox;
-const adapter = require("detox/runners/mocha/adapter");
 
-before(async () => {
+jest.setTimeout(18000);
+
+beforeAll(async () => {
   await detox.init(config);
 });
 
-beforeEach(async function() {
-  await adapter.beforeEach(this);
-});
-
-afterEach(async function() {
-  await adapter.afterEach(this);
-});
-
-after(async () => {
+afterAll(async () => {
   await detox.cleanup();
 });

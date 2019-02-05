@@ -1,0 +1,10 @@
+{
+  "rootDir": "../../",
+  "setupFilesAfterEnv": ["<rootDir>/e2e/init.js"],
+  "testMatch": ["**/*+(.spec.js)"],
+  "preset": "react-native",
+  "transform": {
+    "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
+  },
+  "testEnvironment": "node"
+}

@@ -5,7 +5,7 @@ const LandingPage = require("../pages/Landing.page");
 const ButtonStates = require("../data/button-states");
 
 describe("Landing", () => {
-  before(async () => {
+  beforeAll(async () => {
     await device.reloadReactNative();
   });
 
