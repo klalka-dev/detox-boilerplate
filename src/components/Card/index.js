@@ -9,6 +9,7 @@ class Card extends Component {
   }
 
   render() {
+    const { links } = this.props;
     return (
       <View
         style={{
@@ -18,9 +19,9 @@ class Card extends Component {
           borderWidth: 2
         }}
       >
-        {this.props.links.map((link, index) => {
-          return <Item index={index}>{link}</Item>;
-        })}
+        {links.map((link, index) => (
+          <Item index={index}>{link}</Item>
+        ))}
       </View>
     );
   }
