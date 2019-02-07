@@ -15,18 +15,18 @@ To get started with the default configurations, first you must have the followin
 
 Next, from project root run: `npm run test-ios`.
 
-> NOTE: Android does not currently work. It is throwing an error. I have commented on StackOverflow and Detox issues but not sure what is wrong.
+> NOTE: Android does not currently work. It is throwing an error. According to the documentation the Android experiences problems and is unreliable. All testing is done on iOS for now.
 
 # Configurations
 
 ## Test Runner
 
-We are using Mocha as our test runner. This is configured in [`package.json`](../package.json) under
+We moved to Jest as our test runner. This is configured in [`package.json`](../package.json) under
 `test-runner`.
 
 ## Reporter
 
-This is configured in the [mocha.opts](./e2e/config/mocha.opts)
+This is configured in the [jest.json](./e2e/config/jest.json)
 
 # Folder Structure
 
@@ -43,9 +43,7 @@ List of folders inside the `e2e` directory and their purpose
 
 ## `config/`
 
-This contains our `mocha.opts` file. For more information on mocha check out their [docs](https://mochajs.org/#mochaopts).
-
-> There is an option to configure Jest instead of Mocha. Not sure if it is worth it to create a boilerplate generate to have mocha or jest set as default.
+This contains our `jest.json` file. For more information on Jest check out their [docs](https://jestjs.io/docs/en/configuration).
 
 ## `data/`
 
@@ -53,7 +51,7 @@ Contains the test data used in the testing of the app. This could be things such
 
 ## `pages/`
 
-This boilerplate example uses a [Page Object Model](https://medium.com/tech-tajawal/page-object-model-pom-design-pattern-f9588630800b) to organize the different views (pages, routes, screens, etc) of your application.
+This boilerplate example uses a Page Object Model to organize the different views (pages, routes, screens, etc) of your application.
 
 These pages are a collection of Elements, which are composed of a valid Detox Matcher and a locator String. It is a common practice to put a `testID` on the container for your page for chaining purposes. Below is a sample implementation of a container element.
 
@@ -82,6 +80,4 @@ element.
 
 # Development Workflow
 
-An explanation of how easy maintaining UI Tests can be with Detox by showing an example Development Workflow
-
-Here is a notion post that is a current [WIP](https://www.notion.so/Using-Chaining-to-Make-Detox-Selectors-More-Precise-32c4a60c008441638f1e8e1bc6138246)
+Here is a [blog post](https://www.kevinlalka.com/content/blogs/2019-02-07/easy-react-native-testing-with-detox/) on how I use Detox to test using a TDD Workflow
